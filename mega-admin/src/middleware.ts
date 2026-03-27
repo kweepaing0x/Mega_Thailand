@@ -2,8 +2,6 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-
-  // Check for Supabase auth cookie (any key starting with sb-)
   const hasCookie = request.cookies.getAll().some(c => c.name.startsWith('sb-'))
 
   if (!hasCookie && pathname.startsWith('/dashboard')) {
